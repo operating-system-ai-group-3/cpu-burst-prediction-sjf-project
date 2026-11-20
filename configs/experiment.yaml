@@ -1,0 +1,26 @@
+experiment:
+  n_trials: 10
+  base_seed: 100
+  n_train_processes: 300
+  n_test_processes: 150
+  bursts_per_process: 8
+
+workload:
+  arrival_rate_scale: 4.0
+  base_burst_mean: 12.0
+  predictability_levels:
+    high_predictability: 0.05    # Steady bursts
+    medium_predictability: 0.25  # Moderate variance
+    low_predictability: 0.60     # Highly changeable bursts
+
+scheduler:
+  time_quantum: 3.0              # ms for Round Robin
+  context_switch_cost: 0.05      # ms overhead per switch
+  io_delay: 1.0                  # ms pause between CPU bursts
+
+models:
+  exp_avg_alpha: 0.5
+  initial_burst_estimate: 10.0
+  history_window: 3
+  rf_n_estimators: 30
+  rf_max_depth: 6
